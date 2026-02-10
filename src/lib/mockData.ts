@@ -128,4 +128,14 @@ export const mockValues = {
         category: ['Cinema', 'Politics', 'Politics', 'Technology', 'General', 'Cinema'][i],
         publishedAt: new Date(Date.now() - 1000 * 60 * 60 * (i + 1)).toISOString(),
     })) as NewsItem[],
+
+    trendingTags: [
+        '#MaheshBabu',
+        '#APCapitalCity',
+        '#BiggBossTelugu7',
+        '#APElections',
+        '#GlobalInvestorsSummit',
+        '#SSRajamouli',
+        '#TupakiUpdates'
+    ]
 };

@@ -5,7 +5,7 @@ import { getHomePageData } from '@/lib/service'; // Use Service
 import { Flame, Activity, ChevronRight } from 'lucide-react';
 
 export default async function Home() {
-  const { breaking, topStories, viralVideos, latestStories } = await getHomePageData(); // Async Call
+  const { breaking, topStories, viralVideos, latestStories, trendingTags } = await getHomePageData(); // Async Call
 
   return (
     <main className="min-h-screen bg-charcoal-900 text-white pb-20 md:pb-10">
@@ -14,21 +14,27 @@ export default async function Home() {
       {/* Trending Strip (LCP Optimized Text) */}
       <div className="bg-charcoal-800 border-b border-charcoal-700 overflow-hidden">
         <div className="container mx-auto px-4 py-2 flex items-center gap-4 text-xs font-medium uppercase tracking-wider text-gray-400 overflow-x-auto scrollbar-hide">
-          <span className="text-saffron-500 flex items-center gap-1 shrink-0">
+          <span className="text-saffron-500 flex items-center gap-1 shrink-0 z-10 bg-charcoal-800 pr-2">
             <Flame className="w-3 h-3" /> Trending Now
           </span>
-          <span className="w-px h-3 bg-charcoal-600 shrink-0" />
-          {[
-            '#MaheshBabu',
-            '#APCapitalCity',
-            '#BiggBossTelugu7',
-            '#APElections',
-            '#GlobalInvestorsSummit'
-          ].map((tag) => (
-            <span key={tag} className="shrink-0 hover:text-white cursor-pointer transition-colors whitespace-nowrap">
-              {tag}
-            </span>
-          ))}
+          <span className="w-px h-3 bg-charcoal-600 shrink-0 z-10" />
+
+          <div className="flex overflow-hidden w-full [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] relative">
+            <div className="flex animate-marquee gap-8 pr-8 shrink-0">
+              {trendingTags?.map((tag: string) => (
+                <span key={tag} className="text-gray-400 hover:text-white cursor-pointer transition-colors whitespace-nowrap">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="flex animate-marquee gap-8 pr-8 shrink-0" aria-hidden="true">
+              {trendingTags?.map((tag: string) => (
+                <span key={`${tag}-copy`} className="text-gray-400 hover:text-white cursor-pointer transition-colors whitespace-nowrap">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

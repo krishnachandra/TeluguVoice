@@ -31,6 +31,7 @@ export const getHomePageData = async () => {
             topStories: posts.slice(1, 4),
             latestStories: posts.slice(4, 10),
             viralVideos: mockValues.viralVideos, // Still mock until we add video support in CMS
+            trendingTags: mockValues.trendingTags,
         };
     } catch (error) {
         console.error('Error fetching home page data:', error);
