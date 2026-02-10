@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+
+@theme {
+  /* TeluguVoice: "Deep Impact" Palette */
+  --color-charcoal-900: #121212; /* Deep Background */
+  --color-charcoal-800: #1E1E1E; /* Card Surface */
+  --color-charcoal-700: #2C2C2C; /* Hover States */
+  
+  --color-saffron-500: #FF9933; /* Primary Action / Breaking */
+  --color-saffron-600: #E68A2E; /* Hover Action */
+  
+  --color-electric-500: #2979FF; /* Secondary / Links */
+  
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  
+  /* Typography */
+  --font-display: var(--font-inter), sans-serif;
+  --font-body: var(--font-merriweather), serif;
+
+  /* Animation */
+  --animate-fade-in: fade-in 0.5s ease-in-out;
+  --animate-slide-up: slide-up 0.5s ease-out;
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slide-up {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply bg-charcoal-900 text-white font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-white;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .text-saffron-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-saffron-500 to-[#FF5500];
+  }
+  .card-hover {
+    @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-saffron-500/10;
+  }
+}
