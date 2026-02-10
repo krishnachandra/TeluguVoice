@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true, // Temporary fix to bypass optimization
     remotePatterns: [
       {
         protocol: 'https',
